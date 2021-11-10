@@ -328,14 +328,14 @@
         if (localStorage.getItem("win_count")) {
           big = "BIG " + (localStorage.getItem("win_count"));
         } else {
-          big = 0;
+          big = "BIG " + 0;
         }
         $("#big_count").html(big);
         let reg = "";
         if (localStorage.getItem("reg_count")) {
           reg = "REG " + (localStorage.getItem("reg_count"));
         } else {
-          reg = 0;
+          reg = "REG " + 0;
         }
         $("#reg_count").html(reg);
       }
