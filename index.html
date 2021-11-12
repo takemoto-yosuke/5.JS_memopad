@@ -16,6 +16,7 @@
         <div class="win_count">
           <h2 id="big_count">BIG 0</h2>
           <h2 id="reg_count">REG 0</h2>
+          <h2 id="coin_count">COIN 10枚</h2>
         </div>
         <img src="img\jankenman.png">
         <div class="num">
@@ -86,6 +87,8 @@
     //「ショ」音声オブジェクト
     var music_syo = new Audio('music/syo_audio.mp3');
 
+
+
     $(function () {
       show_count(0);
       hide();
@@ -93,7 +96,7 @@
       //メダル投入
       $("#first_btn").on("click", function () {
         $('#gogo_0').show();
-
+        coin_count(-1);
         if (wait_flag == 1) {
           music_janken.play();
           first_janken();
@@ -288,6 +291,7 @@
       }
       //console.log(win_count);
       localStorage.setItem("win_count", JSON.stringify(win_count));
+      coin_count(2);
     }
 
     //勝ち回数のカウント
@@ -301,6 +305,7 @@
       }
       //console.log(win_count);
       localStorage.setItem("reg_count", JSON.stringify(reg_count));
+      coin_count(1);
     }
 
     //勝ちカウント表示
@@ -339,6 +344,19 @@
         }
         $("#reg_count").html(reg);
       }
+    }
+
+    function coin_count(pay) {
+      let Coin_Count = "";
+      if (localStorage.getItem("coin_count")) {
+        Coin_Count = Number(localStorage.getItem("coin_count")) + pay;
+      }
+      else {
+        Coin_Count = 9;
+      }
+      localStorage.setItem("coin_count", JSON.stringify(Coin_Count));
+      let coin = "CION" + Coin_Count + "枚";
+      $("#coin_count").html(coin);
     }
   </script>
 
